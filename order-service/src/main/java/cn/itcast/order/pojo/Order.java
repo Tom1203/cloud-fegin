@@ -1,6 +1,7 @@
 package cn.itcast.order.pojo;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.itheima.pojo.User;
 import lombok.Data;
 
 /**
