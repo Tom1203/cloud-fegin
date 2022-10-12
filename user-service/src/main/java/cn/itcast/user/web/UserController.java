@@ -1,13 +1,14 @@
 package cn.itcast.user.web;
 
+import cn.itcast.user.pojo.ResponseModel;
 import cn.itcast.user.pojo.User;
 import cn.itcast.user.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 /**
  * @author 虎哥
@@ -33,5 +34,18 @@ public class UserController {
         User user = userService.queryById(id);
         user.setId(Long.valueOf(localPort));
         return user;
+    }
+
+
+
+    @PostMapping("/user")
+    public ResponseModel queryOrderByUserId(@RequestBody Map<String,String> param ) {
+        try{
+            System.out.println("调用成功参数是"+param);
+            return ResponseModel.ok("","成功");
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResponseModel.error("","失败");
+        }
     }
 }
